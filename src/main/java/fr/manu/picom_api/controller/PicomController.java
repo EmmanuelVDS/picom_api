@@ -1,5 +1,6 @@
 package fr.manu.picom_api.controller;
 
+import fr.manu.picom_api.models.LoginRequest;
 import fr.manu.picom_api.models.Role;
 import fr.manu.picom_api.models.User;
 import fr.manu.picom_api.services.RoleService;
@@ -7,6 +8,7 @@ import fr.manu.picom_api.services.UserService;
 import fr.manu.picom_api.services.impl.UserDetailsImpl;
 import fr.manu.picom_api.services.impl.UserDetailsServiceImpl;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -91,7 +93,7 @@ public class PicomController {
         return userService.findByUserEmail(email);
     }
 
-    @PostMapping(value = "/public/api/signin")
+    @PostMapping(value = "/public/api/signin", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
         System.out.println(LocalDate.now() + " :: new API_REST POST_public/api/signin");
         System.out.println(LocalDate.now() + " :: DEBUG - email=" + loginRequest.getEmail() + ", password=" + loginRequest.getPassword());

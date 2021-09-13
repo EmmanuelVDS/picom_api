@@ -1,4 +1,4 @@
-package fr.manu.picom_api.controller;
+package fr.manu.picom_api.models;
 
 import fr.manu.picom_api.services.impl.UserDetailsServiceImpl;
 
